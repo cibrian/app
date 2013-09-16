@@ -7,9 +7,8 @@
 <script src="jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
 <script src="cordova.js" type="text/javascript"> </script>
-
 <script src="main.js" type="text/javascript"></script>
-<script src="purl.js" type="text/javascript"></script>
+
 
 <script>
 
@@ -20,8 +19,8 @@ function agregarCliente(){
 	
 		function agregarClienteSql(tx) {
 			name = $("#Nombre").attr('value');
-	       team = $("#RFC").attr('value');
-        tx.executeSql('INSERT INTO SoccerPlayer(Name,Club) VALUES ("'+name+'", "'+team+'")');
+	       rfc = $("#RFC").attr('value');
+        tx.executeSql('INSERT INTO Cliente(nombre,rfc) VALUES ("'+name+'", "'+rfc+'")');
 		
 	$("#Nombre").val('');
 	$("#RFC").val('');	
@@ -35,7 +34,7 @@ function agregarCliente(){
 		function actualizarClienteSql(tx) {
 			nameNew = $("#nombreInput").attr('value');
 	       teamNew = $("#rfcInput").attr('value');
-        tx.executeSql('UPDATE SoccerPlayer SET Name="'+nameNew+'", Club="'+teamNew+'" WHERE id='+ident+'');
+        tx.executeSql('UPDATE Cliente SET nombre="'+nameNew+'", rfc="'+teamNew+'" WHERE id='+ident+'');
 		}
 	
 	
@@ -46,7 +45,7 @@ function agregarCliente(){
 	
 		
 	function eliminarClienteSql(tx) {
-    tx.executeSql('DELETE FROM SoccerPlayer WHERE id='+ident+'');
+    tx.executeSql('DELETE FROM Cliente WHERE id='+ident+'');
 	}
 		
 		

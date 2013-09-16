@@ -1,6 +1,6 @@
 //add listener when device ready
     document.addEventListener("deviceready", onDeviceReady, false);
-    var db = window.openDatabase("Dummy_DB", "1.0", "Just a Dummy DB", 200000); //will create database Dummy_DB or open it
+    var db = window.openDatabase("Factura", "1.0", "Just a Dummy DB", 200000); 
 	var ident;
  
     //function will be called when device ready
@@ -10,7 +10,8 @@
  
     //create table and insert some record
     function crearDB(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS SoccerPlayer (id INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL, Club TEXT NOT NULL)');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS "Cliente" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "nombre" VARCHAR(50), "rfc" VARCHAR(50), "calle" VARCHAR(50), "numExt" VARCHAR(50), "numInt" VARCHAR(50), "colonia" VARCHAR(50), "cp" VARCHAR(50), "municipio" VARCHAR(50), "estado" VARCHAR(50), "email" VARCHAR(50))');
+	
     }
  
 
@@ -24,14 +25,14 @@
  
     //select all from SoccerPlayer
     function muestraClientes(tx){
-        tx.executeSql('SELECT * FROM SoccerPlayer',[],muestraClientesSql,errorClientes);
+        tx.executeSql('SELECT * FROM Cliente',[],muestraClientesSql,errorClientes);
     }
  
     function muestraClientesSql(tx,result){
         $('#listaClientes').empty();
         $.each(result.rows,function(index){
             var row = result.rows.item(index);
-            $('#listaClientes').append('<li id="'+row['id']+'"><a href="#"><h3 class="ui-li-heading">'+row['Name']+'</h3><p class="ui-li-desc">'+row['Club']+'</p></a></li>');
+            $('#listaClientes').append('<li id="'+row['id']+'"><a href="#"><h3 class="ui-li-heading">'+row['nombre']+'</h3><p class="ui-li-desc">'+row['rfc']+'</p></a></li>');
 			
 			
 			
@@ -44,7 +45,7 @@
 	
 	
  function editarCliente(tx){
-        tx.executeSql('SELECT * FROM SoccerPlayer WHERE id='+ident+'',[],editarClienteSql,errorClientes);
+        tx.executeSql('SELECT * FROM Cliente WHERE id='+ident+'',[],editarClienteSql,errorClientes);
     }
 	
 	function editarClienteSql(tx,result){
@@ -53,9 +54,9 @@
             var row = result.rows.item(index);
        
 			
-			$('#nombreInput').val(row['Name']);
+			$('#nombreInput').val(row['nombre']);
 			
-			$('#rfcInput').val(row['Club']);
+			$('#rfcInput').val(row['rfc']);
 			
         });
  
