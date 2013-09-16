@@ -20,6 +20,7 @@ function agregarCliente(){
 		function agregarClienteSql(tx) {
 			name = $("#Nombre").attr('value');
 	       rfc = $("#RFC").attr('value');
+		   
         tx.executeSql('INSERT INTO Cliente(nombre,rfc) VALUES ("'+name+'", "'+rfc+'")');
 		
 	$("#Nombre").val('');
@@ -82,19 +83,23 @@ $('#listaClientes li').live('click', function() {
   </div>
 
   <div data-role="content">
-    <label for="textfield">Nombre:</label>
-    <input type="text" name="textfield" id="Nombre">
-    <label for="textfield2">RFC :</label>
-    
-    <input type="text" name="textfield2"  id="RFC">
+    <label for="textfield">Información del contribuyente:</label>
+    <input type="text" required id="Nombre" placeholder="*Nombre o razón social">
+    <input type="text" required id="RFC" placeholder="*RFC (sin guiones)" maxlength="13">
+    <label for="textfield">Ubicación del contribuyente:</label>
+     <input type="text" required id="calle" placeholder="*Calle" >
+     <input type="text" id="numExterior" placeholder="Núm. Ext.">
+     <input type="text" id="numInterior" placeholder="Núm. Int.">
+     <input type="text" id="colonia" placeholder="Colonia.">
+     <input type="text" required id="cp" placeholder="*C.P.">
+     <input type="text"  id="municipio" placeholder="Municipio">
+     <input type="text" required id="estado" placeholder="*Estado">
+     <input type="text"  id="email" placeholder="E-mail">
+     
     <button onClick="agregarCliente();">Agregar</button>
 <a href="#page2" data-role="button">Lista de clientes</a>
 
-    <!--<button onClick="mover();" >Listado2</button>-->
-   
-   
-   
-    </div>
+  </div>
 </div>
 
 
