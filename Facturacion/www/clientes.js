@@ -70,3 +70,51 @@
 			$.mobile.changePage("#page3", {transition : "slide"});
 			});
 
+			            
+            function errorClientes(err) {
+            }
+            
+            
+            function successClientes() {
+            db.transaction(muestraClientes,errorClientes);
+            }
+            
+            //select all from SoccerPlayer
+            function muestraClientes(tx){
+            tx.executeSql('SELECT * FROM Cliente',[],muestraClientesSql,errorClientes);
+            }
+            
+            function muestraClientesSql(tx,result){
+            $('#listaClientes').empty();
+            $.each(result.rows,function(index){
+            var row = result.rows.item(index);
+            $('#listaClientes').append('<li id="'+row['id']+'"><a href="#"><h3 class="ui-li-heading">'+row['nombre']+'</h3><p class="ui-li-desc">'+row['rfc']+'</p></a></li>');
+            });
+            $( "#listaClientes" ).listview( "refresh" );
+            
+            }
+            
+            
+            function editarCliente(tx){
+            tx.executeSql('SELECT * FROM Cliente WHERE id='+ident+'',[],editarClienteSql,errorClientes);
+            }
+            
+            function editarClienteSql(tx,result){
+            
+            $.each(result.rows,function(index){
+            var row = result.rows.item(index);
+            $('#nombreInput').val(row['nombre']);
+            $('#rfcInput').val(row['rfc']);
+            $('#calleInput').val(row['calle']);
+            $('#intInput').val(row['numInt']);
+            $('#extInput').val(row['numExt']);
+            $('#coloniaInput').val(row['colonia']);
+            $('#cpInput').val(row['cp']);
+            $('#municipioInput').val(row['municipio']);
+            $('#estadoInput').val(row['estado']);
+            $('#emailInput').val(row['email']);	
+            });
+       
+            
+            }
+
