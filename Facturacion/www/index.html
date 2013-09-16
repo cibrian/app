@@ -20,11 +20,31 @@ function agregarCliente(){
 		function agregarClienteSql(tx) {
 			name = $("#Nombre").attr('value');
 	       rfc = $("#RFC").attr('value');
+		   calle = $("#calle").attr('value');
+		   numInt= $("#numInterior").attr('value');
+		   numExt = $("#numExterior").attr('value');
+		   colonia = $("#colonia").attr('value');
+		   cp = $("#cp").attr('value');
+		   municipio = $("#municipio").attr('value');
+		   estado = $("#estado").attr('value');
+		   email = $("#email").attr('value');
 		   
-        tx.executeSql('INSERT INTO Cliente(nombre,rfc) VALUES ("'+name+'", "'+rfc+'")');
+        tx.executeSql('INSERT INTO Cliente(nombre,rfc,calle,numExt,numInt,colonia,cp,municipio,estado,email) VALUES ("'+name+'", "'+rfc+'", "'+calle+'", "'+numExt+'", "'+numInt+'", "'+colonia+'", "'+cp+'", "'+municipio+'", "'+estado+'", "'+email+'")');
 		
+		
+		
+
+	
 	$("#Nombre").val('');
-	$("#RFC").val('');	
+	 $("#RFC").val('');
+	$("#calle").val('');
+	 $("#numInterior").val('');
+	 $("#numExterior").val('');
+	 $("#colonia").val('');
+	$("#cp").val('');
+	$("#municipio").val('');
+	$("#estado").val('');
+	 $("#email").val('');
 		}
 		
 		function actualizarCliente(){
@@ -34,8 +54,18 @@ function agregarCliente(){
 	
 		function actualizarClienteSql(tx) {
 			nameNew = $("#nombreInput").attr('value');
-	       teamNew = $("#rfcInput").attr('value');
-        tx.executeSql('UPDATE Cliente SET nombre="'+nameNew+'", rfc="'+teamNew+'" WHERE id='+ident+'');
+	       rfcNew = $("#rfcInput").attr('value');
+		   calleNew = $("#calleInput").attr('value');
+		   intNew = $("#intInput").attr('value');
+		   extNew = $("#extInput").attr('value');
+		   coloniaNew = $("#coloniaInput").attr('value');
+		   cpNew = $("#cpInput").attr('value');
+		   municipioNew = $("#municipioInput").attr('value');
+		   estadoNew = $("#estadoInput").attr('value');
+		   emailNew = $("#emailInput").attr('value');
+		   
+		   
+        tx.executeSql('UPDATE Cliente SET nombre="'+nameNew+'", rfc="'+rfcNew+'", calle="'+calleNew+'", numExt="'+extNew+'", numInt="'+intNew+'", colonia="'+coloniaNew+'", cp="'+cpNew+'", municipio="'+municipioNew+'", estado="'+estadoNew+'", email="'+emailNew+'" WHERE id='+ident+'');
 		}
 	
 	
@@ -131,6 +161,15 @@ $('#listaClientes li').live('click', function() {
   <div data-role="content">
     <input id="nombreInput" type="text">
      <input id="rfcInput" type="text">
+     <input id="calleInput" type="text">
+     <input id="extInput" type="text">
+     <input id="intInput" type="text">
+     <input id="coloniaInput" type="text">
+     <input id="cpInput" type="text">
+     <input id="municipioInput" type="text">
+     <input id="estadoInput" type="text">
+     <input id="emailInput" type="text">
+     
      <button onClick="actualizarCliente();" >Actualizar</button>
       <button onClick="eliminarCliente();" >Eliminar</button>
     
