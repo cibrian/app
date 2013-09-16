@@ -5,53 +5,49 @@
  
     //function will be called when device ready
     function onDeviceReady(){
-        db.transaction(populateDB, errorCB, successCB);
+        db.transaction(crearDB, errorClientes, successClientes);
     }
  
     //create table and insert some record
-    function populateDB(tx) {
+    function crearDB(tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS SoccerPlayer (id INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT NOT NULL, Club TEXT NOT NULL)');
-       // tx.executeSql('INSERT INTO SoccerPlayer(Name,Club) VALUES ("Alexandre Pato", "AC Milan")');
-      //  tx.executeSql('INSERT INTO SoccerPlayer(Name,Club) VALUES ("Van Persie", "Arsenal")');
     }
  
-    //function will be called when an error occurred
-    function errorCB(err) {
-       // alert("Error processing SQL: "+err.code);
+
+    function errorClientes(err) {
     }
  
-    //function will be called when process succeed
-    function successCB() {
-        
-        db.transaction(queryDB,errorCB);
+
+    function successClientes() {
+        db.transaction(muestraClientes,errorClientes);
     }
  
     //select all from SoccerPlayer
-    function queryDB(tx){
-        tx.executeSql('SELECT * FROM SoccerPlayer',[],querySuccess,errorCB);
+    function muestraClientes(tx){
+        tx.executeSql('SELECT * FROM SoccerPlayer',[],muestraClientesSql,errorClientes);
     }
  
-    function querySuccess(tx,result){
-        $('#SoccerPlayerList').empty();
+    function muestraClientesSql(tx,result){
+        $('#listaClientes').empty();
         $.each(result.rows,function(index){
             var row = result.rows.item(index);
-            $('#SoccerPlayerList').append('<li id="'+row['id']+'"><a href="#"><h3 class="ui-li-heading">'+row['Name']+'</h3><p class="ui-li-desc">'+row['Club']+'</p></a></li>');
+            $('#listaClientes').append('<li id="'+row['id']+'"><a href="#"><h3 class="ui-li-heading">'+row['Name']+'</h3><p class="ui-li-desc">'+row['Club']+'</p></a></li>');
 			
 			
 			
         });
  
       
-  $( "#SoccerPlayerList" ).listview( "refresh" );
+  $( "#listaClientes" ).listview( "refresh" );
   
     }
 	
 	
- function editar(tx){
-        tx.executeSql('SELECT * FROM SoccerPlayer WHERE id='+ident+'',[],llenarcampos,errorCB);
+ function editarCliente(tx){
+        tx.executeSql('SELECT * FROM SoccerPlayer WHERE id='+ident+'',[],editarClienteSql,errorClientes);
     }
 	
-	function llenarcampos(tx,result){
+	function editarClienteSql(tx,result){
         
         $.each(result.rows,function(index){
             var row = result.rows.item(index);

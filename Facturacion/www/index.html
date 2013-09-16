@@ -13,112 +13,50 @@
 
 <script>
 
-//function mostrar(){
 
-//value = $("#Equipo").attr('value');
-
-//$("#Equipo").val('equip');
-
-
-
-//alert(value);}
-
-function on(){
-	
-     db.transaction(agregar, errorCB, successCB);
-
-	//$("#Nombre").val('');
-	//$("#RFC").val('');	
-		
+function agregarCliente(){
+     db.transaction(agregarClienteSql, errorClientes, successClientes);
     }
 	
-		function agregar(tx) {
+		function agregarClienteSql(tx) {
 			name = $("#Nombre").attr('value');
 	       team = $("#RFC").attr('value');
         tx.executeSql('INSERT INTO SoccerPlayer(Name,Club) VALUES ("'+name+'", "'+team+'")');
 		
-		$("#Nombre").val('');
-	   $("#RFC").val('');	
-		
+	$("#Nombre").val('');
+	$("#RFC").val('');	
 		}
 		
-		function updateCliente(){
-	
-	
-	
-     db.transaction(actualizar, errorCB, successCB);
+		function actualizarCliente(){
+     db.transaction(actualizarClienteSql, errorClientes, successClientes);
 	 $.mobile.changePage("#page", {transition : "slide"});
-
-	//$("#Nombre").val('');
-	//$("#RFC").val('');	
-		
     }
 	
-	
-			function eliminarCliente(){
-	
-	
-	
-     db.transaction(eliminar, errorCB, successCB);
-	 $.mobile.changePage("#page", {transition : "slide"});
-
-
-		
-    }
-	
-	
-	
-	function actualizar(tx) {
+		function actualizarClienteSql(tx) {
 			nameNew = $("#nombreInput").attr('value');
 	       teamNew = $("#rfcInput").attr('value');
         tx.executeSql('UPDATE SoccerPlayer SET Name="'+nameNew+'", Club="'+teamNew+'" WHERE id='+ident+'');
-		
-		
-		
 		}
+	
+	
+	 function eliminarCliente(){
+     db.transaction(eliminarClienteSql, errorClientes, successClientes);
+	 $.mobile.changePage("#page", {transition : "slide"});	
+    }
+	
 		
-		function eliminar(tx) {
-        tx.executeSql('DELETE FROM SoccerPlayer WHERE id='+ident+'');
-		
-		
-		
-		
-		}
+	function eliminarClienteSql(tx) {
+    tx.executeSql('DELETE FROM SoccerPlayer WHERE id='+ident+'');
+	}
 		
 		
 
-	
-	function mover(){
-		
-		$.mobile.changePage("#page3", {transition : "slide"});
-		
-		
-	
-				
-};
-   
-  
-  
 
-   
-   
-   
-    
-
-$('#SoccerPlayerList li').live('click', function() {
-    
-	
+$('#listaClientes li').live('click', function() {
 	ident=$(this).attr("id");
-	db.transaction(editar,errorCB);
-	
-	mover();
-	
-
+	db.transaction(editarCliente,errorClientes);
+	$.mobile.changePage("#page3", {transition : "slide"});
 });
-
-
-
-
 
 
 
@@ -150,7 +88,7 @@ $('#SoccerPlayerList li').live('click', function() {
     <label for="textfield2">RFC :</label>
     
     <input type="text" name="textfield2"  id="RFC">
-    <button onClick="on();">Agregar</button>
+    <button onClick="agregarCliente();">Agregar</button>
 <a href="#page2" data-role="button">Lista de clientes</a>
 
     <!--<button onClick="mover();" >Listado2</button>-->
@@ -169,7 +107,7 @@ $('#SoccerPlayerList li').live('click', function() {
     <h1>Clientes</h1>
   </div>
   <div data-role="content">
-     <ul data-role="listview" id="SoccerPlayerList" data-filter="true" data-filter-placeholder="Buscar clientes"
+     <ul data-role="listview" id="listaClientes" data-filter="true" data-filter-placeholder="Buscar clientes"
      data-autodividers="true" data-split-icon="gear" data-split-theme="d">
   
     
@@ -189,7 +127,7 @@ $('#SoccerPlayerList li').live('click', function() {
   <div data-role="content">
     <input id="nombreInput" type="text">
      <input id="rfcInput" type="text">
-     <button onClick="updateCliente();" >Actualizar</button>
+     <button onClick="actualizarCliente();" >Actualizar</button>
       <button onClick="eliminarCliente();" >Eliminar</button>
     
   
