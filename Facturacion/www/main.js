@@ -5,10 +5,15 @@
             
             function onDeviceReady(){
             db.transaction(crearDB, errorClientes, successClientes);
+             db.transaction(muestraProductos,errorProductos);
             }
             
             function crearDB(tx) {
             tx.executeSql('CREATE TABLE IF NOT EXISTS "Cliente" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "nombre" VARCHAR(50), "rfc" VARCHAR(50), "calle" VARCHAR(50), "numExt" VARCHAR(50), "numInt" VARCHAR(50), "colonia" VARCHAR(50), "cp" VARCHAR(50), "municipio" VARCHAR(50), "estado" VARCHAR(50), "email" VARCHAR(50))');
-            
+            tx.executeSql('CREATE TABLE IF NOT EXISTS "Producto" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "descripcion" VARCHAR(40), "unidad" VARCHAR(40), "serviciooproducto" VARCHAR(40), "costo" VARCHAR(40))');
+                  
+                  
             }
             
+
+
