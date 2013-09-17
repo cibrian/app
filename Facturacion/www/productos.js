@@ -73,7 +73,7 @@
             $('#listaProductos').empty();
             $.each(result.rows,function(index){
             var row = result.rows.item(index);
-            $('#listaProductos').append('<li id="'+row['id']+'"><a href="#"><h3 class="ui-li-heading">'+row['descripcion']+'</h3><p class="ui-li-desc">$'+row['serviciooproducto']+'</p></a></li>');
+            $('#listaProductos').append('<li id="'+row['id']+'"><a href="#"><h3 class="ui-li-heading">'+row['descripcion']+'</h3><p class="ui-li-desc">$'+row['costo']+'</p></a></li>');
             });
             $( "#listaProductos" ).listview( "refresh" );
             
