@@ -8,6 +8,11 @@
             db.transaction(muestraProductos,errorSQL);
             db.transaction(actualizarFactura, errorSQL);
             db.transaction(muestraProductosFactura, errorSQL);
+            db.transaction(obtenerIDFactura, errorSQL);
+
+            
+
+
 
             }
             
@@ -16,7 +21,8 @@
             tx.executeSql('CREATE TABLE IF NOT EXISTS "Producto" ("id" INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , "descripcion" VARCHAR(40), "unidad" VARCHAR(40), "serviciooproducto" VARCHAR(40), "costo" VARCHAR(40))');
             tx.executeSql('CREATE TABLE IF NOT EXISTS factura (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, fecha DATETIME, regimen TEXT, emisor TEXT, formaPago TEXT, metodoPago TEXT, moneda TEXT, lugarExpedicion TEXT, subtotal DOUBLE, descuento DOUBLE, iva DOUBLE, retencionIva DOUBLE, retencionIsr DOUBLE, total DOUBLE, cbb TEXT)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS facturaDetalle (idFactura INTEGER, idProducto INTEGER, cantidad INTEGER, precioTotal DOUBLE)');
-                  
+             //   tx.executeSql('INSERT INTO factura (fecha) VALUES ("2012-20-1")');
+        // tx.executeSql('INSERT INTO factura (fecha) VALUES ("2015-20-1")');      
             }
             
 

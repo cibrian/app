@@ -179,11 +179,26 @@
  <div data-role="page" id="page7">
         <div data-role="header">
                 <h1>Factura</h1>
-            <a href="#" data-icon="back" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Home</a>
+                <div data-role="navbar">
+                <ul>
+                <li><a href="#page" data-transition="none" data-icon="plus">Clientes</a></li>
+                <li><a href="#page4" data-transition="none" data-icon="plus">Productos</a></li>
+                <li><a href="#page7" data-transition="none" data-icon="plus">Factura</a></li>
+
+                </ul>
+                </div>
+
+            
         </div>
 <div data-role="content">       
-    
+    <label for="folio"> Folio: </label>
+    <input id="folio" type="text">
+
+
     <img src="images/logoQR.jpg" alt="" >
+
+<label for="fecha"> Fecha: </label>
+    <input id="fecha" type="date">
 
 <table data-role="table" id="my-table" data-mode="reflow" class="ui-responsive">
   <thead>
@@ -196,6 +211,7 @@
        
        <input id="agregarItem" type="button" value="Agregar producto">
        
+       <input id="subtotal" type="text">
 
 
         </div>
@@ -205,6 +221,7 @@
 
 <div data-role="page" id="inventario">
         <div data-role="header">
+            <a href="#" data-icon="back" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Factura</a>
                 <h1>Selecciona un producto</h1>
         </div>
         <div data-role="content">       
@@ -222,7 +239,7 @@
 
 <div data-role="page" id="formAgregarProducto">
         <div data-role="header">
-                <h1>Agregar Producto a factura </h1>
+                <h1>Agregar producto a factura </h1>
         </div>
         <div data-role="content">       
                 
@@ -231,7 +248,7 @@
   <input id="precioHidden" type="hidden">
   <input id="cantidadProducto" type="text" placeholder="¿Cuántos elementos agregará de este producto?">
 
- <input id="agregarProductoFactura" type="button">
+ <input id="agregarProductoFactura" type="button" value="Agregar producto a la factura">
 
 
         </div>

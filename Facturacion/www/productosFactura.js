@@ -9,6 +9,8 @@ $('.remove').live("click", function() {
                   
                   db.transaction(eliminarProductoTabla, errorSQL);
                   db.transaction(actualizarFactura, errorSQL);
+                   db.transaction(obtenerTotalFactura, errorSQL);
+
                   
                   
                   
@@ -106,6 +108,8 @@ db.transaction(muestraProductosFactura, errorSQL);
 function adicionProducto(){
                   db.transaction(adicionProductoSql, errorSQL);
                   db.transaction(actualizarFactura, errorSQL);
+                  db.transaction(obtenerTotalFactura, errorSQL);
+
                   $.mobile.changePage("#page7", {transition : "slide"});
                   }
                   
@@ -117,9 +121,11 @@ function adicionProducto(){
                 
        
             
-        tx.executeSql('INSERT INTO facturaDetalle (idFactura, idProducto, cantidad, precioTotal) VALUES (1,'+ident+','+ cantidadVal+','+ total +')');
+        tx.executeSql('INSERT INTO facturaDetalle (idFactura, idProducto, cantidad, precioTotal) VALUES ('+folioActual+','+ident+','+ cantidadVal+','+ total +')');
                   
                       $("#cantidadProducto").val('');
+
+
                   
                   }
 
