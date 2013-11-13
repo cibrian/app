@@ -6,9 +6,11 @@
             function onDeviceReady(){
             db.transaction(crearDB, errorSQL, successClientes);
             db.transaction(muestraProductos,errorSQL);
-            db.transaction(actualizarFactura, errorSQL);
             db.transaction(muestraProductosFactura, errorSQL);
             db.transaction(obtenerIDFactura, errorSQL);
+            db.transaction(limpiarTablaProductos, errorSQL);
+            db.transaction(actualizarFactura, errorSQL);
+            
 
             
 

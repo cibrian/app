@@ -44,4 +44,13 @@ $("#subtotal").val(results.rows.item(0).total);
 
 
 
+function limpiarTablaProductos(tx) {
+    
+     console.log("El folio a borrar es: " + folioActual);
+    
+    tx.executeSql('Delete from facturaDetalle where idFactura='+folioActual);
+}
+
+
+
 
