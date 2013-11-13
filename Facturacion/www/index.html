@@ -60,7 +60,6 @@
                 <div data-role="page" id="page2">
                 <div data-role="header" data-position="fixed" data-theme="d">
                 <a href="#" data-icon="back" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Home</a>
-                
                 <h1>Clientes</h1>
                 </div>
                 <div data-role="content">
@@ -106,7 +105,7 @@
                 <ul>
                 <li><a href="#page" data-transition="none" data-icon="plus">Clientes</a></li>
                 <li><a href="#page4" data-transition="none" data-icon="plus">Productos</a></li>
-                
+                <li><a href="#page7" data-transition="none" data-icon="plus">Factura</a></li>
                 </ul>
                 </div>
                 
@@ -176,8 +175,8 @@
                 </div>
 
 
- <div data-role="page" id="page7">
-        <div data-role="header">
+ <div data-role="page" id="page7" >
+        <div data-role="header" data-theme="d">
                 <h1>Factura</h1>
                 <div data-role="navbar">
                 <ul>
@@ -200,18 +199,44 @@
 <label for="fecha"> Fecha: </label>
     <input id="fecha" type="date">
 
+    <!-- <input id="agregarItem" type="button" value="Agregar producto">-->
+
+    
+       
+
 <table data-role="table" id="my-table" data-mode="reflow" class="ui-responsive">
   <thead>
-    <tr><th>Cant.</th><th>Descrip.</th><th>Precio</th> <th><a></a></th></tr>
+    <tr><th>Cant.</th><th>Descrip.</th><th>Precio</th> <th> <a href="#" id="agregarItem" data-role="button" data-icon="plus" data-iconpos="notext"></a></th></tr>
   </thead>
   <tbody id="tablaProductos">
    
     </tbody>
 </table>
        
-       <input id="agregarItem" type="button" value="Agregar producto">
-       
+      
+       <label for="subtotal"> Subtotal </label>
        <input id="subtotal" type="text">
+
+
+<label for="descuento"> Descuento </label>
+
+       <input id="descuento" type="text">
+
+       <label for="iva"> IVA</label>
+
+       <input id="iva" type="text" readonly>
+
+
+    <label for="retencionIva"> Retención IVA</label>
+       <input id="retencionIva" type="text">
+
+       <label for="retencionIsr"> Retención ISR</label>
+
+       <input id="retencionIsr" type="text">
+
+       <label for="total"> Total</label>
+
+       <input type="text" id="total">
 
 
         </div>
@@ -220,7 +245,7 @@
 
 
 <div data-role="page" id="inventario">
-        <div data-role="header">
+        <div data-role="header" data-theme="d">
             <a href="#" data-icon="back" data-iconpos="left" data-rel="back" data-transition="slide" data-direction="reverse">Factura</a>
                 <h1>Selecciona un producto</h1>
         </div>
@@ -232,18 +257,16 @@
 
 
         </div>
-        <div data-role="footer">
-                <h4>Pie de página</h4>
-        </div>
+        
 </div>
 
 <div data-role="page" id="formAgregarProducto">
-        <div data-role="header">
+        <div data-role="header" data-theme="d">
                 <h1>Agregar producto a factura </h1>
         </div>
         <div data-role="content">       
                 
-
+<label for="nombreProducto"> Producto seleccionado</label>
   <input id="nombreProducto" type="text" readonly>
   <input id="precioHidden" type="hidden">
   <input id="cantidadProducto" type="text" placeholder="¿Cuántos elementos agregará de este producto?">

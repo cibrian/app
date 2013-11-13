@@ -2,6 +2,7 @@ var folioActual;
 var totalFactura;
 
 
+
 function obtenerIDFactura(tx) {
     tx.executeSql('SELECT MAX(id) as max from factura ', [], obtenerIDFacturaSql, errorSQL);
 }
@@ -26,6 +27,11 @@ $("#folio").val(folioActual);
 
 }
 
+$("#descuento").val(0);
+$("#retencionIva").val(0);
+$("#retencionIsr").val(0);
+$("#total").val(0);
+
 }
 
 function obtenerTotalFactura(tx) {
@@ -35,9 +41,38 @@ function obtenerTotalFactura(tx) {
 
 function obtenerTotalFacturaSql(tx, results) {
     
+var subt= results.rows.item(0).total;
 
+var i = subt * 0.16;
+
+var d = $("#descuento").val() * 0.01;
+
+
+
+d = subt * d;
+
+var rIva = $("#retencionIva").val() * 0.01; ;
+
+
+rIva = subt * rIva;
+
+var rIsr = $("#retencionIsr").val()* 0.01; ;
+
+
+
+rIsr = subt * rIsr;
     
-$("#subtotal").val(results.rows.item(0).total);
+$("#subtotal").val(subt);
+$("#iva").val(i);
+
+console.log(subt);
+    console.log(i);
+    console.log(rIsr);
+    console.log(rIva);
+    console.log(d);
+
+$("#total").val(subt-i-rIsr-rIva-d);
+
 
 
 }
