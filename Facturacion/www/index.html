@@ -9,6 +9,7 @@
                 <script src="jquery.mobile-1.0.min.js" type="text/javascript"></script>
                 <script src="cordova.js" type="text/javascript"> </script>
                 <script src="main.js" type="text/javascript"></script>
+                <script src="codigoCBBCamara.js" type="text/javascript"></script>
                 <script src="clientes.js" type="text/javascript"></script>
                 <script src="productos.js" type="text/javascript"></script>
                 <script src="factura.js" type="text/javascript"></script>
@@ -191,17 +192,36 @@
         </div>
 <div data-role="content">       
     <label for="folio"> Folio: </label>
-    <input id="folio" type="text">
+    <input id="folio" type="text" readonly>
 
 
-    <img src="images/logoQR.jpg" alt="" >
+    <img id="cbbCode" src="images/logoQR.jpg" onclick="getPhoto(pictureSource.PHOTOLIBRARY);" style="width:104px;height:104px;" >
 
 <label for="fecha"> Fecha: </label>
     <input id="fecha" type="date">
 
     <!-- <input id="agregarItem" type="button" value="Agregar producto">-->
 
-    
+<label for="metodoPago"> Método de pago: </label>
+
+        <select id="metodoPago">
+      <option value="No Aplica">No aplica</option>
+      <option value="Efectivo">Efectivo</option>
+      <option value="Cheque" >Cheque</option>
+      <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+      <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+      <option value="Tarjeta de débito">Tarjeta de débito</option>
+       <option value="Transferencia electrónica">Transferencia electrónica</option>
+         </select>
+
+
+     <input placeholder="Número de cuenta" id="numCuenta" type="text" disabled="">
+
+
+<label for="selectClientes"> Cliente: </label>
+ <select id="selectClientes">
+       
+         </select>
        
 
 <table data-role="table" id="my-table" data-mode="reflow" class="ui-responsive">
@@ -215,7 +235,7 @@
        
       
        <label for="subtotal"> Subtotal </label>
-       <input id="subtotal" type="text">
+       <input id="subtotal" type="text" readonly>
 
 
 <label for="descuento"> Descuento </label>
@@ -236,7 +256,7 @@
 
        <label for="total"> Total</label>
 
-       <input type="text" id="total">
+       <input type="text" id="total" readonly>
 
 
         </div>

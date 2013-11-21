@@ -2,8 +2,15 @@
             document.addEventListener("deviceready", onDeviceReady, false);
             var db = window.openDatabase("Factura", "1.0", "Just a Dummy DB", 200000); 
             var ident;
+            var pictureSource;
+            var destinationType;
             
             function onDeviceReady(){
+
+            pictureSource=navigator.camera.PictureSourceType;
+            destinationType=navigator.camera.DestinationType;
+
+
             db.transaction(crearDB, errorSQL, successClientes);
             db.transaction(muestraProductos,errorSQL);
             db.transaction(muestraProductosFactura, errorSQL);

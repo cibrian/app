@@ -86,6 +86,31 @@ function limpiarTablaProductos(tx) {
     tx.executeSql('Delete from facturaDetalle where idFactura='+folioActual);
 }
 
+$(document).ready(function(){
+$('#metodoPago').change(function() {
+
+  var d = document.getElementById('numCuenta');
+  var mp = $('#metodoPago').val();
+
+
+    if ( mp == "No Aplica" || mp == "Efectivo") {
+
+      d.disabled = "disabled";
+      d.value = "";
+
+    }
+
+    else{
+
+   d.disabled = "";
+                    
+
+    }
+
+
+});   
+});   
+
 
 
 

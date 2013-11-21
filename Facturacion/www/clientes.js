@@ -86,10 +86,16 @@
             
             function muestraClientesSql(tx,result){
             $('#listaClientes').empty();
+            $('#selectClientes').empty();
             $.each(result.rows,function(index){
             var row = result.rows.item(index);
             $('#listaClientes').append('<li id="'+row['id']+'"><a href="#"><h3 class="ui-li-heading">'+row['nombre']+'</h3><p class="ui-li-desc">'+row['rfc']+'</p></a></li>');
+            $('#selectClientes').append('<option value="'+row['id']+'">'+row['nombre']+'</option>');
             });
+
+            
+
+            
             $( "#listaClientes" ).listview( "refresh" );
             
             }
